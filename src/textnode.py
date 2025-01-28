@@ -22,7 +22,11 @@ class TextNode:
         # same class TextNode
         if not isinstance(other, TextNode):
             return NotImplemented
-        return self.text == other.text and self.text_type == other.text_type and self.url == other.url
+        return (
+            self.text == other.text and 
+            self.text_type == other.text_type and 
+            self.url == other.url
+        )
     
     # Create a __repr__ method that returns a string 
     # representation of the TextNode object
