@@ -1,7 +1,7 @@
-from textnode import *
+from textnode import TextType,TextNode
 
 def main():
-    text_node = TextNode(text="This is a text node", text_type="bold", url="https://www.boot.dev")
+    text_node = TextNode("This is a text node", TextType.BOLD, "https://www.boot.dev")
     print(text_node)
 
 if __name__ == '__main__':
