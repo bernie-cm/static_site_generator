@@ -37,3 +37,17 @@ class HTMLNode:
         """Prints a HTMLNode object and see its tag, value, children and props.
         """
         return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
+    
+
+class LeafNode(HTMLNode):
+    """Create a child class of HTMLNode called LeafNode. 
+    Its constructor should differ slightly from the HTMLNode class because:
+        - It should not allow for any children because leaf nodes are terminal nodes
+        - The value data member should be required (and tag even though the tag's value may be None)
+        - Use the super() function to call the constructor of the HTMLNode class.
+    """
+    def __init__(self, tag, value, props):
+        if value is None:       # This ensures value is always required
+            raise ValueError("LeafNode requires a value.")
+        
+        super().__init__(tag, value, children=[], props=props)
