@@ -5,6 +5,16 @@ class HTMLNode:
         self.children = children    # List of HTMLNode objects
         self.props = props          # Dict representing the attributes of the HTML tag
 
+    def __eq__(self, other):
+        if not isinstance(other, HTMLNode):
+            return NotImplemented
+        return (
+            self.tag == other.tag and
+            self.value == other.value and
+            self.children == other.children and
+            self.props == other.props
+        )
+
     def to_html(self):
         """Raises NotImplementedError to be implemented by child classes.
         Child classes will override this method to render themselves as HTML.
