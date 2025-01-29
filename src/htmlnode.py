@@ -20,12 +20,10 @@ class HTMLNode:
         }
         Then self.props_to_html() should return href="https://www.google.com" target="blank"
         """
-        pass
-
-d = {
-    "href": "http://amazon.com",
-    "target": "_blank",
-}
-
-s = " ".join(f'{key}="{value}"' for key, value in d.items())
-print(s)
+        result = " ".join(f'{key}="{value}"' for key, value in self.props.items())
+        return f" {result}"
+    
+    def __repr__(self):
+        """Prints a HTMLNode object and see its tag, value, children and props.
+        """
+        return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
