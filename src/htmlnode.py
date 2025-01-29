@@ -50,5 +50,5 @@ class LeafNode(HTMLNode):
         if value is None:       # This ensures value is always required
             raise ValueError("LeafNode requires a value.")
         
+        # Explicitly set children to an empty list as LeafNode cannot have children
         super().__init__(tag, value, children=[], props=props)
-        # TODO: Define following methods and tests
