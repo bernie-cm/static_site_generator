@@ -51,3 +51,4 @@ class LeafNode(HTMLNode):
             raise ValueError("LeafNode requires a value.")
         
         super().__init__(tag, value, children=[], props=props)
+        # TODO: Define following methods and tests
