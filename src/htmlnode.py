@@ -7,7 +7,6 @@ class HTMLNode:
 
     def to_html(self):
         """Raises NotImplementedError to be implemented by child classes.
-        
         Child classes will override this method to render themselves as HTML.
         """
         raise NotImplementedError
@@ -21,3 +20,12 @@ class HTMLNode:
         }
         Then self.props_to_html() should return href="https://www.google.com" target="blank"
         """
+        pass
+
+d = {
+    "href": "http://amazon.com",
+    "target": "_blank",
+}
+
+s = " ".join(f'{key}="{value}"' for key, value in d.items())
+print(s)
