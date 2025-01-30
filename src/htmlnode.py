@@ -44,11 +44,23 @@ class LeafNode(HTMLNode):
     Its constructor should differ slightly from the HTMLNode class because:
         - It should not allow for any children because leaf nodes are terminal nodes
         - The value data member should be required (and tag even though the tag's value may be None)
-        - Use the super() function to call the constructor of the HTMLNode class.
-    """
+        - Use the super() function to call the constructor of the HTMLNode class."""
     def __init__(self, tag, value, props):
         if value is None:       # This ensures value is always required
             raise ValueError("LeafNode requires a value.")
         
         # Explicitly set children to an empty list as LeafNode cannot have children
         super().__init__(tag, value, children=[], props=props)
+
+    def to_html(self):
+        """Renders a leaf node as an HTML string (by returning a string).
+        If the leaf node has no value, it should raise a ValueError. All leaf nodes must have a value.
+        If there is no tag (e.g. it's None), the value should be returned as raw text.
+        Otherwise, it should render an HTML tag. For example, these leaf nodes:
+            LeafNode("p", "This is a paragraph of text.")
+            LeafNode("a", "Click me!", {"href": "https://www.google.com"})
+
+        Should render as:
+            <p>This is a paragraph of text.</p>
+            <a href="https://www.google.com">Click me!</a>"""
+        
