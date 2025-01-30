@@ -72,3 +72,17 @@ class LeafNode(HTMLNode):
         # If props is empty
         # Take the tag and value from the constructor
         return f"<{self.tag}>{self.value}</{self.tag}>"
+    
+class ParentNode(HTMLNode):
+    def __init__(self, tag=None, children=None, props=None):
+        
+        
+        super().__init__(tag, value, children, props)
+
+
+"""Create another child class of the HTMLNode called ParentNode. Its constructor should differ from the parent class in that:
+  The tag and children arguments are not optional
+  It doesn't take a value argument
+  props is optional
+  (the exact opposite of the LeafNode class)
+"""
