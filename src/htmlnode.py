@@ -49,7 +49,7 @@ class LeafNode(HTMLNode):
         # Explicitly set children to an empty list as LeafNode cannot have children
         super().__init__(tag, value, children=[], props=props)
 
-    def to_html(self, tag, value):
+    def to_html(self):
         """Renders a leaf node as an HTML string (by returning a string).
         If the leaf node has no value, it should raise a ValueError. All leaf nodes must have a value.
         If there is no tag (e.g. it's None), the value should be returned as raw text.
@@ -67,7 +67,7 @@ class LeafNode(HTMLNode):
         
         # If  props is not empty, then call the props_to_html method to build the resulting string
         if self.props:
-            return f"<{self.tag} {self.props_to_html()}>{self.value}</{self.tag}>"
+            return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
 
         # If props is empty
         # Take the tag and value from the constructor

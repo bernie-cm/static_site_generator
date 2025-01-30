@@ -2,8 +2,7 @@ import unittest
 from htmlnode import HTMLNode
 from textnode import TextNode, TextType
 
-"""
-TODO: Create a few nodes and make sure the props_to_html method works 
+"""Create a few nodes and make sure the props_to_html method works 
 as expected
 """
 class TestHTMLNode(unittest.TestCase):
