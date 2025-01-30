@@ -24,10 +24,7 @@ class HTMLNode:
     def props_to_html(self):
         """Return a string that represents the HTML attributes of the node
         For example, if self.props is
-        {
-            "href": "https://www.google.com",
-            "target": "_blank",
-        }
+        {"href": "https://www.google.com", "target": "_blank"}
         Then self.props_to_html() should return href="https://www.google.com" target="blank"
         """
         result = " ".join(f'{key}="{value}"' for key, value in self.props.items())
@@ -52,7 +49,7 @@ class LeafNode(HTMLNode):
         # Explicitly set children to an empty list as LeafNode cannot have children
         super().__init__(tag, value, children=[], props=props)
 
-    def to_html(self):
+    def to_html(self, tag, value):
         """Renders a leaf node as an HTML string (by returning a string).
         If the leaf node has no value, it should raise a ValueError. All leaf nodes must have a value.
         If there is no tag (e.g. it's None), the value should be returned as raw text.
@@ -63,4 +60,15 @@ class LeafNode(HTMLNode):
         Should render as:
             <p>This is a paragraph of text.</p>
             <a href="https://www.google.com">Click me!</a>"""
+        if self.value is None:
+            raise ValueError("All leaf nodes must have a value.")
+        if self.tag is None:
+            return self.value
         
+        # If  props is not empty, then call the props_to_html method to build the resulting string
+        if self.props:
+            return f"<{self.tag} {self.props_to_html()}>{self.value}</{self.tag}>"
+
+        # If props is empty
+        # Take the tag and value from the constructor
+        return f"<{self.tag}>{self.value}</{self.tag}>"
