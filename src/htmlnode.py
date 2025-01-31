@@ -85,4 +85,10 @@ class ParentNode(HTMLNode):
     def to_html(self):
         if self.tag is None:
             raise ValueError("Object must have a tag.")
-        pass
+        if self.children is None:
+            raise ValueError("Children must be included.")
+        
+        # Recursively generate HTML for each child
+        children_html = "".join(child.to_html() for child in self.children)
+        
+        return f"<{self.tag}>{children_html}</{self.tag}>"
